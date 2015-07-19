@@ -4,3 +4,9 @@
 
 基于 Node JS , Express4.x , mongoose , sha1
 科目， 学校，用户 ，试题 管理（CRUD）
+
+
+
+npm install
+
+npm start (node ./bin/www)
