@@ -68,7 +68,13 @@ $(document).ready(function(){
 		$.get("/question/"+courseid+"/"+kid+"/"+page, function (questions){
 			var html = '';
 			var i = 1;
-			questions.forEach(function (question){
+			/*
+				currentPage: 0
+				items: Array[0]
+				pageCount: 0
+			*/	
+			if(!questions.items.length) return ;
+			questions.items.forEach(function (question){
 				html +='<p><b>NO '+i+'</b>'
 				html +='<p>'+question.questiontype+'</p>';
 				html +='<p>'+question.source+'</p>';
@@ -79,11 +85,39 @@ $(document).ready(function(){
 				html +='</p>';
 				i++;
 			});
+			/*
+			if(questions.pageCount){
+				var paginationhtml = '<nav>';
+			        paginationhtml += '<ul class="pagination">';
+			        paginationhtml += '<li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>';
+			        for (var j=1;j<questions.pageCount;j++){
+						var act = '', act2 = '';
+						if(j == questions.currentPage){
+							act = ' class="active" ';
+							act2 = ' <span class="sr-only">(current)</span> ';
+						}
+						paginationhtml += '<li'+act+'><a href="#">'+j+' '+act2+'</a></li>';
+					}
+					paginationhtml += '<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>';
+			     	paginationhtml += '</ul>';
+			   		paginationhtml += '</nav>';
+					html += paginationhtml;
+			}
+			*/
+			
 			if(page){
 				$("#collapseTwo .panel-body").append(html);
 			}else{
 				$("#collapseTwo .panel-body").html(html);
 			}
+			
+			$(window).off("scroll").on("scroll", function (e){
+				var scrollTop = $(document).scrollTop();
+				var height = $("#collapseTwo .panel-body").height();
+				if((height - scrollTop)< 250){
+					queryquestions(courseid, kid, page++);
+				}
+			});
 			
 		});
 

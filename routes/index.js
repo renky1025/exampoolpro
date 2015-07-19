@@ -1,4 +1,5 @@
 var express = require('express');
+var Promise = require('promise');
 var router = express.Router();
 var mongoose = require( 'mongoose' );
 var uri = 'mongodb://localhost/exampool';
@@ -64,7 +65,7 @@ router.get('/', function(req, res, next) {
 	};
 	//find().skip(from).limit(to)
 
-    Subject.find({}).limit(20).exec(function (err, data){
+    Subject.find({}).limit(100).exec(function (err, data){
             if (err){
                 console.log('error occured');
                 return;
@@ -131,16 +132,26 @@ router.get("/question/:sid/:kid/:page", function (req, res){
   var sid = req.params.sid;
   var kid = req.params.kid;
   var perPage = 20, page = Math.max(0, req.params.page);
-
-  console.log({"subjectid":parseInt(sid),"kid":kid});
-  Question.find({"subjectid":parseInt(sid),"kid":kid}).limit(perPage).skip(perPage * page).exec(function (err, items){
+  var qpromise = new Promise(function(resolve, reject){
+      Question.count({"subjectid":parseInt(sid),"kid":kid}, function(err, c){
+        return resolve(c);
+        if(err){
+          reject(err);
+        }
+      });
+  });
+  qpromise.then(function (count){
+    Question.find({"subjectid":parseInt(sid),"kid":kid}).limit(perPage).skip(perPage * page).exec(function (err, items){
         if (err){
             console.log('error occured');
             console.log(err);
             return;
         }
-  		res.json(items);
+        var pageCount = Math.ceil(count/perPage) ;
+        var data = {pageCount:pageCount,currentPage:page,items:items};
+  		  res.json(data);
   	});
+  });
 });
 
 
