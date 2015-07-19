@@ -1,0 +1,157 @@
+<% include layout %>
+<div class="roe">
+<ul class="list-inline">
+  <li><a href="/account/">账号列表</a></li>
+  <li><a href="/account/add">添加账号</a></li>
+</ul>
+</div>
+<div class="row">
+  <form class="form-horizontal" method="POST" action="/account/create">
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">添加账号</legend>
+      </div>
+
+    <div class="control-group">
+        <label class="control-label" for="input01">登录名</label>
+        <div class="controls">
+          <input type="text" name="username" placeholder="登录名" class="input-xlarge">
+          <p class="help-block">登录名英文数字</p>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="input01">邮箱</label>
+        <div class="controls">
+          <input type="text" name="email" placeholder="邮箱" class="input-xlarge">
+          <p class="help-block">有效邮箱</p>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="input01">手机号码</label>
+        <div class="controls">
+          <input type="text" name="phone" placeholder="手机号" class="input-xlarge">
+          <p class="help-block">11位手机号码</p>
+        </div>
+    </div> 
+    <div class="control-group">
+        <label class="control-label" for="input01">真实姓名</label>
+        <div class="controls">
+          <input type="text" name="realname" placeholder="真实姓名" class="input-xlarge">
+          <p class="help-block">真实姓名</p>
+        </div>
+    </div> 
+    <div class="control-group">
+        <label class="control-label" for="input01">职务</label>
+        <div class="controls">
+          <input type="text" name="title" placeholder="职务" class="input-xlarge">
+          <p class="help-block">职务 班长，学习委员 课代表。。。。</p>
+        </div>
+    </div> 
+    <div class="control-group">
+    <label class="control-label" for="input01">角色</label>
+    <div class="controls">
+      <div class="radio">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios1" value="student" checked>
+          学生
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios2" value="teacher">
+         教师
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios3" value="director">
+          教导主任
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios4" value="admin">
+          管理员
+        </label>
+      </div>
+     </div>
+    </div> 
+    <div id="otherfieldsforstudent">
+      <div class="control-group">
+          <label class="control-label" for="input01">年级</label>
+          <div class="controls">
+            <input type="text" name="grade" placeholder="年级" class="input-xlarge">
+            <p class="help-block">年级</p>
+          </div>
+      </div>
+      <div class="control-group">
+          <label class="control-label" for="input01">班级</label>
+          <div class="controls">
+            <input type="text" name="class" placeholder="班级" class="input-xlarge">
+            <p class="help-block">班级</p>
+          </div>
+      </div>
+      <div class="control-group">
+          <label class="control-label" for="input01">学号</label>
+          <div class="controls">
+            <input type="text" name="student_number" placeholder="学号" class="input-xlarge">
+            <p class="help-block">学号</p>
+          </div>
+      </div>
+      <div class="control-group">
+          <label class="control-label" for="input01">学校</label>
+          <div class="controls">
+            <input type="text" name="school" placeholder="学校" class="input-xlarge">
+            <p class="help-block">学校</p>
+          </div>
+      </div>
+    </div>
+    <div id="otherfieldsforteacher" style="display:none">
+      <div class="control-group">
+          <label class="control-label" for="input01">年级</label>
+          <div class="controls">
+            <input type="text" name="grade" placeholder="年级" class="input-xlarge">
+            <p class="help-block">年级</p>
+          </div>
+      </div>
+      <div class="control-group">
+          <label class="control-label" for="input01">班级</label>
+          <div class="controls">
+            <input type="text" name="class" placeholder="班级" class="input-xlarge">
+            <p class="help-block">班级</p>
+          </div>
+      </div>
+      <div class="control-group">
+          <label class="control-label" for="input01">课程</label>
+          <div class="controls">
+            <input type="text" name="course" placeholder="课程" class="input-xlarge">
+            <p class="help-block">课程</p>
+          </div>
+      </div>
+      <div class="control-group">
+          <label class="control-label" for="input01">学校</label>
+          <div class="controls">
+            <input type="text" name="school" placeholder="学校" class="input-xlarge">
+            <p class="help-block">学校</p>
+          </div>
+      </div>
+    </div>
+    
+    
+    <div class="control-group">
+        <label class="control-label" for="input01">设置登录密码</label>
+        <div class="controls">
+          <input type="password" name="password" placeholder="登录密码" class="input-xlarge">
+          <p class="help-block">登录密码</p>
+        </div>
+    </div> 
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">添加</button>
+			      <button type="submit" class="btn btn-danger">取消</button>
+          </div>
+		  
+
+    </fieldset>
+  </form>
+</div>
+<% include footer %>

@@ -1,0 +1,41 @@
+<% include layout %>
+<div class="roe">
+<ul class="list-inline">
+  <li><a href="/roles/">角色列表</a></li>
+  <li><a href="/roles/add">添加角色</a></li>
+</ul>
+</div>
+<div class="row">
+  <form class="form-horizontal" method="POST" action="/roles/create">
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">修改角色</legend>
+      </div>
+	  <input type="hidden" value="<%= role._id %>" name="_id" />
+    <div class="control-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input01">角色名称</label>
+          <div class="controls">
+            <input type="text" value="<%= role.name %>" name="name" placeholder="角色名称" class="input-xlarge">
+            <p class="help-block">角色名称</p>
+          </div>
+    </div>
+    <div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" for="input01">角色别名</label>
+          <div class="controls">
+            <input type="text" name="aliasname"  value="<%= role.alias %>"  placeholder="角色别名" class="input-xlarge">
+            <p class="help-block">角色别名</p>
+          </div>
+    </div>
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">保存</button>
+			      <button type="submit" class="btn btn-danger">取消</button>
+          </div>
+		  
+
+    </fieldset>
+  </form>
+</div>
+<% include footer %>

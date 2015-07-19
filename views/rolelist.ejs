@@ -1,0 +1,36 @@
+<% include layout %>
+
+
+<div class="roe">
+<ul class="list-inline">
+  <li><a href="/roles/">角色列表</a></li>
+  <li><a href="/roles/add">添加角色</a></li>
+</ul>
+</div>
+<div class="row">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>_ID</th>
+      <th>名称</th>
+      <th>别名</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+<% if(results){ %>
+  <% results.forEach(function(item){ %>
+  <tr>
+    <td><%= item._id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.alias %></td>
+    <td><a href="/roles/edit/<%= item._id %>" > 修改 </a>  || <a href="/roles/remove/<%= item._id %>" > 删除 </a></td>
+    
+  </tr>
+  <% });%>
+<% } %>
+
+</table>
+
+</div>
+<% include footer %>

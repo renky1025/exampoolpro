@@ -1,0 +1,48 @@
+<% include layout %>
+<div class="roe">
+<ul class="list-inline">
+  <li><a href="/courses/">课程列表</a></li>
+  <li><a href="/courses/add">添加课程</a></li>
+</ul>
+</div>
+<div class="row">
+  <form class="form-horizontal" method="POST" action="/courses/create">
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">修改学校</legend>
+      </div>
+	  <input type="hidden" value="<%= course._id %>" name="_id" />
+ <div class="control-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input01">课程名称</label>
+          <div class="controls">
+            <input type="text" name="course" value="<%= course.course %>" placeholder="课程名称" class="input-xlarge">
+            <p class="help-block">课程名称</p>
+          </div>
+    </div>
+    <div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" for="input01">课程阶段</label>
+          <div class="controls">
+            <select class="form-control" name="setion">
+              <option value="小学" <% if(course.setion == "小学"){ %> selected <%}%>>小学</option>
+              <option value="初中" <% if(course.setion == "初中"){ %> selected <%}%>>初中</option>
+              <option value="高中" <% if(course.setion == "高中"){ %> selected <%}%>>高中</option>
+              <option value="中专" <% if(course.setion == "中专"){ %> selected <%}%>>中专</option>
+              <option value="大专" <% if(course.setion == "大专"){ %> selected <%}%>>大专</option>
+              <option value="大学" <% if(course.setion == "大学"){ %> selected <%}%>>大学</option>
+            </select>
+            <p class="help-block">阶段</p>
+          </div>
+    </div>
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">保存</button>
+			      <button type="submit" class="btn btn-danger">取消</button>
+          </div>
+		  
+
+    </fieldset>
+  </form>
+</div>
+<% include footer %>

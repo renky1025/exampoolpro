@@ -1,0 +1,41 @@
+<% include layout %>
+<div class="roe">
+<ul class="list-inline">
+  <li><a href="/school/">学校列表</a></li>
+  <li><a href="/school/add">添加学校</a></li>
+</ul>
+</div>
+<div class="row">
+  <form class="form-horizontal" method="POST" action="/school/create">
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">修改学校</legend>
+      </div>
+	  <input type="hidden" value="<%= school._id %>" name="_id" />
+    <div class="control-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input01">学校名称</label>
+          <div class="controls">
+            <input type="text" value="<%= school.name %>" name="name" placeholder="学校名称" class="input-xlarge">
+            <p class="help-block">学校名称</p>
+          </div>
+    </div>
+    <div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" for="input01">学校所在地区</label>
+          <div class="controls">
+            <input type="text" name="region"  value="<%= school.region %>"  placeholder="学校所在地区" class="input-xlarge">
+            <p class="help-block">学校所在地区</p>
+          </div>
+    </div>
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">保存</button>
+			      <button type="submit" class="btn btn-danger">取消</button>
+          </div>
+		  
+
+    </fieldset>
+  </form>
+</div>
+<% include footer %>

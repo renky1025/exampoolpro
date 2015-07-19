@@ -1,0 +1,36 @@
+<% include layout %>
+
+
+<div class="roe">
+<ul class="list-inline">
+  <li><a href="/school/">学校列表</a></li>
+  <li><a href="/school/add">添加学校</a></li>
+</ul>
+</div>
+<div class="row">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>_ID</th>
+      <th>学校</th>
+      <th>地区</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+<% if(results){ %>
+  <% results.forEach(function(item){ %>
+  <tr>
+    <td><%= item._id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.region %></td>
+    <td><a href="/school/edit/<%= item._id %>" > 修改 </a>  || <a href="/school/remove/<%= item._id %>" > 删除 </a></td>
+    
+  </tr>
+  <% });%>
+<% } %>
+
+</table>
+
+</div>
+<% include footer %>

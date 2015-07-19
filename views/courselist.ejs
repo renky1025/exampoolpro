@@ -1,0 +1,65 @@
+<% include layout %>
+
+
+<div class="roe">
+<ul class="list-inline">
+  <li><a href="/courses/">课程列表</a></li>
+  <li><a href="/courses/add">添加课程</a></li>
+</ul>
+</div>
+<div class="row">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>课程名称</th>
+      <th>阶段</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+<% if(results){ %>
+  <% results.forEach(function(item){ %>
+  <tr>
+    <td><%= item.courseid %></td>
+    <td><%= item.course %></td>
+    <td><%= item.setion %></td>
+    <td><a href="/courses/edit/<%= item._id %>" > 修改 </a>  || <a href="/courses/remove/<%= item._id %>" > 删除 </a></td>
+    
+  </tr>
+  <% });%>
+<% } %>
+
+</table>
+
+		<% if (pageCount > 0) { %>
+	        <ul class="pagination">
+	            
+	            <li <% if (currentPage == 1) { %>class="disabled"  <% } %>><a href="/courses?page=1">&laquo;</a></li>
+	           
+	            <% var i = 1;
+	            if (currentPage > 5) {
+	                i = currentPage - 4;
+	            } %>
+	            <% if (i !== 1) { %>
+	                <li class="disabled"><a href="#">...</a></li>
+	            <% } %>
+	            <% for (i; i<=pageCount; i++) { %>
+	                <% if (currentPage == i) { %>
+	                    <li class="active"><span><%= i %> <span class="sr-only">(current)</span></span></li>
+	                <% } else { %>
+	                    <li><a href="/courses?page=<%= i %>"><%= i %></a></li>
+	                <% } %>
+	                <% if (i == (+currentPage + 4)) { %>
+	                    <li class="disabled"><a href="#">...</a></li>
+	                <% break; } %>
+	            <% } %>
+	            <% if (currentPage != pageCount) { %>
+	                <li><a href="/courses?page=<%= pageCount %>">&raquo;</a></li>
+	            <% } %>
+	        </ul>
+	    <% } %>
+      
+
+</div>
+<% include footer %>
