@@ -74,25 +74,25 @@ var Accountschema = new Schema({
 var Studentschema = new Schema({
     grade: String,
     class: String,
-    schoolid: Schema.Types.ObjectId,
+    schoolid: {type: String ,default: ""},
     school: { type: String, default: "" },
     student_number: String,
-    accountid: Schema.Types.ObjectId
+    accountid:{type: String ,default: ""}
 },{ collection : 'student' });
 
 var Teacherschema = new Schema({
     grade: String,
     class: String,
-    schoolid: Schema.Types.ObjectId,
+    schoolid: {type: String ,default: ""},
     school: { type: String, default: "" },
-    courseid: { type: String, default: "" },
+    courseid: {type: String ,default: ""},
     course:{ type: String, default: "" },
-    accountid: Schema.Types.ObjectId
+    accountid: {type: String ,default: ""}
 },{ collection : 'teacher' });
 
 var Schoolschema = new Schema({
     name: String,
-    region: String
+    region: { type: String, default: "" }
 },{ collection : 'school' });
 
 

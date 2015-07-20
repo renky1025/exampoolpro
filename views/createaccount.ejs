@@ -12,44 +12,44 @@
         <legend class="">添加账号</legend>
       </div>
 
-    <div class="control-group">
-        <label class="control-label" for="input01">登录名</label>
-        <div class="controls">
+    <div class="form-group">
+        <label class="col-xs-3 control-label" for="input01">登录名</label>
+        <div class="col-xs-5 controls">
           <input type="text" name="username" placeholder="登录名" class="input-xlarge">
           <p class="help-block">登录名英文数字</p>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="input01">邮箱</label>
-        <div class="controls">
+    <div class="form-group">
+        <label class="col-xs-3 control-label" for="input01">邮箱</label>
+        <div class="col-xs-5 controls">
           <input type="text" name="email" placeholder="邮箱" class="input-xlarge">
           <p class="help-block">有效邮箱</p>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="input01">手机号码</label>
-        <div class="controls">
+    <div class="form-group">
+        <label class="col-xs-3 control-label" for="input01">手机号码</label>
+        <div class="col-xs-5 controls">
           <input type="text" name="phone" placeholder="手机号" class="input-xlarge">
           <p class="help-block">11位手机号码</p>
         </div>
     </div> 
-    <div class="control-group">
-        <label class="control-label" for="input01">真实姓名</label>
-        <div class="controls">
+    <div class="form-group">
+        <label class="col-xs-3 control-label" for="input01">真实姓名</label>
+        <div class="col-xs-5 controls">
           <input type="text" name="realname" placeholder="真实姓名" class="input-xlarge">
           <p class="help-block">真实姓名</p>
         </div>
     </div> 
-    <div class="control-group">
-        <label class="control-label" for="input01">职务</label>
-        <div class="controls">
+    <div class="form-group">
+        <label class="col-xs-3 control-label" for="input01">职务</label>
+        <div class="col-xs-5 controls">
           <input type="text" name="title" placeholder="职务" class="input-xlarge">
           <p class="help-block">职务 班长，学习委员 课代表。。。。</p>
         </div>
     </div> 
-    <div class="control-group">
-    <label class="control-label" for="input01">角色</label>
-    <div class="controls">
+    <div class="form-group">
+    <label class="col-xs-3 control-label" for="input01">角色</label>
+    <div class="col-xs-5 controls">
       <div class="radio">
         <label>
           <input type="radio" name="optionsRadios" id="optionsRadios1" value="student" checked>
@@ -76,82 +76,104 @@
       </div>
      </div>
     </div> 
-    <div id="otherfieldsforstudent">
-      <div class="control-group">
-          <label class="control-label" for="input01">年级</label>
-          <div class="controls">
-            <input type="text" name="grade" placeholder="年级" class="input-xlarge">
+    <div id="otherfieldsforstudent" class="otherfields">
+      <div class="form-group">
+          <label class="col-xs-3 control-label" for="input01">年级</label>
+          <div class="col-xs-5 controls">
+            <input type="text" name="student_grade" placeholder="年级" class="input-xlarge">
             <p class="help-block">年级</p>
           </div>
       </div>
-      <div class="control-group">
-          <label class="control-label" for="input01">班级</label>
-          <div class="controls">
-            <input type="text" name="class" placeholder="班级" class="input-xlarge">
+      <div class="form-group">
+          <label class="col-xs-3 control-label" for="input01">班级</label>
+          <div class="col-xs-5 controls">
+            <input type="text" name="student_class" placeholder="班级" class="input-xlarge">
             <p class="help-block">班级</p>
           </div>
       </div>
-      <div class="control-group">
-          <label class="control-label" for="input01">学号</label>
-          <div class="controls">
+      <div class="form-group">
+          <label class="col-xs-3 control-label" for="input01">学号</label>
+          <div class="col-xs-5 controls">
             <input type="text" name="student_number" placeholder="学号" class="input-xlarge">
             <p class="help-block">学号</p>
           </div>
       </div>
-      <div class="control-group">
-          <label class="control-label" for="input01">学校</label>
-          <div class="controls">
-            <input type="text" name="school" placeholder="学校" class="input-xlarge">
+      <div class="form-group">
+          <label class="col-xs-3  control-label" for="input01">学校</label>
+          <div class="col-xs-5 controls">
+            <select name="student_schoolid" class="form-control">
+            <% school.forEach( function(item){ %>
+              <option value="<%= item._id %>"><%= item.name %></option>
+            <% })%>
+              <option value="other">其他</option>
+            </select>
+
+            <input type="text" name="student_school" placeholder="学校" class="input-xlarge hidden">
             <p class="help-block">学校</p>
           </div>
       </div>
     </div>
-    <div id="otherfieldsforteacher" style="display:none">
-      <div class="control-group">
-          <label class="control-label" for="input01">年级</label>
-          <div class="controls">
-            <input type="text" name="grade" placeholder="年级" class="input-xlarge">
+    <div id="otherfieldsforteacher" class="otherfields hidden">
+      <div class="form-group">
+          <label class="col-xs-3 control-label" for="input01">年级</label>
+          <div class="col-xs-5 controls">
+            <input type="text" name="teacher_grade" placeholder="年级" class="input-xlarge">
             <p class="help-block">年级</p>
           </div>
       </div>
-      <div class="control-group">
-          <label class="control-label" for="input01">班级</label>
-          <div class="controls">
-            <input type="text" name="class" placeholder="班级" class="input-xlarge">
+      <div class="form-group">
+          <label class="col-xs-3 control-label" for="input01">班级</label>
+          <div class="col-xs-5 controls">
+            <input type="text" name="teacher_class" placeholder="班级" class="input-xlarge">
             <p class="help-block">班级</p>
           </div>
       </div>
-      <div class="control-group">
-          <label class="control-label" for="input01">课程</label>
-          <div class="controls">
-            <input type="text" name="course" placeholder="课程" class="input-xlarge">
+      <div class="form-group">
+          <label class="control-label col-xs-3" for="input01">课程</label>
+          <div class="controls col-xs-5">
+            <select name="teacher_courseid" class="form-control">
+            <% course.forEach( function(item){ %>
+              <option value="<%= item._id %>"><%= item.setion %> -- <%= item.course %></option>
+            <% })%>
+              <option value="other">其他</option>
+            </select>
+            <input type="text" name="teacher_course" placeholder="课程" class="input-xlarge hidden">
             <p class="help-block">课程</p>
           </div>
       </div>
-      <div class="control-group">
-          <label class="control-label" for="input01">学校</label>
-          <div class="controls">
-            <input type="text" name="school" placeholder="学校" class="input-xlarge">
+      <div class="form-group">
+          <label class="control-label col-xs-3 " for="input01">学校</label>
+          <div class="controls col-xs-5">
+            <select name="teacher_schoolid" class="form-control">
+            <% school.forEach( function(item){ %>
+              <option value="<%= item._id %>"><%= item.name %></option>
+            <% })%>
+              <option value="other">其他</option>
+            </select>
+            <input type="text" name="teacher_school" placeholder="学校" class="input-xlarge hidden">
             <p class="help-block">学校</p>
           </div>
       </div>
     </div>
     
     
-    <div class="control-group">
-        <label class="control-label" for="input01">设置登录密码</label>
-        <div class="controls">
+    <div class="form-group">
+        <label class="control-label col-xs-3" for="input01">设置登录密码</label>
+        <div class="controls col-xs-5">
           <input type="password" name="password" placeholder="登录密码" class="input-xlarge">
           <p class="help-block">登录密码</p>
         </div>
     </div> 
-          <div class="controls">
+          <div class="form-group">
+          <div class="controls col-xs-5">
             <button type="submit" class="btn btn-primary">添加</button>
 			      <button type="submit" class="btn btn-danger">取消</button>
+            </div>
           </div>
 		  
 
     </fieldset>
   </form>
 </div>
+
 <% include footer %>
